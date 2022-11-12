@@ -1,0 +1,23 @@
+Create a Validation Rule That Uses Picklist Values
+Create a validation rule that allows a user to escalate a case only when it meets certain requirements.
+Create a validation rule:
+Object: Case
+Name: Mark_as_Escalated
+Make the validation rule fire when someone tries to escalate a case and one or more of these conditions exist:
+The case status is "Closed"
+Priority is not High
+Error Message: You can only set a case as escalated if it is high priority and not closed (we won't check this)
+Error Location: Under the Escalated field (we won't check this)
+Add the Escalated field to the Case Layout page layout
+
+Validation Rule:
+(bu formul calismadi)
+AND ( IsEscalated , OR ( IsClosed ,  IsClosedOnCreate ,  
+																								!ISPICKVAL(Priority , "High") ))
+                                                
+                                                
+                                                
+YADA SU FORMULA:
+(bu formul calisti)
+ ISPICKVAL( Status ,"Closed" ) || NOT (ISPICKVAL( Priority , "high" )) && IsEscalated
+                                                
